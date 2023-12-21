@@ -1,0 +1,10 @@
+{
+    "name": "npm-0oscpu",
+    "version": "0.1.0",
+    "exports": null,
+    "bin": "main.js",
+    "dependencies": {
+        "execa": "^8.0.1"
+    },
+    "type": "module"
+}

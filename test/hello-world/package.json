@@ -13,6 +13,9 @@
         "prepublishOnly": "0oscpu publish"
     },
     "0oscpu": {
+    "devDependencies": {
+        "0oscpu": "file:../.."
+    },
     "main": "main.js",
     "dependencies": {}
   
@@ -20,6 +23,8 @@
         "linux-x64": "linux-x64",
         "darwin-x64": "darwin-x64",
     "scripts": {
+        "build": "tsc",
+        "test": "node main.js",
         "build": "tsc"
     }
     },
@@ -29,6 +34,7 @@
         "@0oscpu/win32-x64": "npm:hello-world@0.0.0-0oscpu.1.0.0-1.win32-x64"
     },
     "devDependencies": {
+        "0oscpu": "file:../..",
         "0oscpu": "file:../.."
     }
 }

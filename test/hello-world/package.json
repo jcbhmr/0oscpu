@@ -1,0 +1,28 @@
+{
+    "name": "hello-world",
+    "version": "1.0.0-1",
+    "exports": null,
+    "bin": "main.js",
+    "type": "commonjs",
+    "scripts": {
+        "build": "0oscpu build me && 0oscpu link me",
+        "build:x": "0oscpu build",
+        "pretest": "npm run build",
+        "test": "node main.js",
+        "postversion": "0oscpu version",
+        "prepublishOnly": "0oscpu publish"
+    },
+    "0oscpu": {
+        "win32-x64": "win32-x64",
+        "linux-x64": "linux-x64",
+        "darwin-x64": "darwin-x64"
+    },
+    "optionalDependencies": {
+        "@0oscpu/darwin-x64": "npm:hello-world@0.0.0-0oscpu.1.0.0-1.darwin-x64",
+        "@0oscpu/linux-x64": "npm:hello-world@0.0.0-0oscpu.1.0.0-1.linux-x64",
+        "@0oscpu/win32-x64": "npm:hello-world@0.0.0-0oscpu.1.0.0-1.win32-x64"
+    },
+    "devDependencies": {
+        "0oscpu": "file:../.."
+    }
+}

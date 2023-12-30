@@ -1,38 +1,30 @@
 #!/usr/bin/env node
-import { parseArgs } from "node:util"
+import { ParseArgsConfig, parseArgs } from "node:util"
 import { readFile } from "node:fs/promises"
-const package_ = JSON.parse(await readFile(new URL("./package.json", import.meta.url), "utf8"))
+const package_ = JSON.parse(await readFile(new URL("../package.json", import.meta.url), "utf8"))
 
 const helpText = `\
-npm-0oscpu v${package_.version}
-
-USAGE
-npm-0oscpu <subcommand> [options]
-
-EXAMPLES
-npm-0oscpu version
-npm-0oscpu generate
-npm-0oscpu publish
-`
-/** @satisfies {import('node:util').ParseArgsConfig['options']} */
-const options = {
-    version: { type: "boolean" },
-    help: { type: "boolean" }
-}
-const commands = {
-    __proto__: null,
-    generate: () => import("./generate.js"),
+TODO: Write help text`
+const subcommands = {
+    __proto__: null!,
+    init: () => import('./init.js'),
+    build: () => import('./build.js'),
+    link: () => import('./link.js'),
     version: () => import("./version.js"),
     publish: () => import("./publish.js")
 }
+const options = {
+    version: { type: "boolean" },
+    help: { type: "boolean" }
+} satisfies ParseArgsConfig['options']
 
 main: {
-    const command = commands[process.argv[2]]
+    const command = subcommands[process.argv[2]]
     if (command) {
         await command()
         break main
     }
-    const { values, positionals } = parseArgs({ options, strict: false, allowPositionals: true })
+    const { values, positionals } = parseArgs({ options })
     if (values.version) {
         console.log(package_.version)
         break main

@@ -1,29 +1,40 @@
 {
-    "name": "0oscpu",
-    "version": "0.1.0",
-    "exports": null,
-    "bin": "dist/main.js",
-    "files": [
-        "dist"
-    ],
-    "dependencies": {
-        "@npmcli/package-json": "^5.0.0",
-        "execa": "^8.0.1",
-        "glob": "^10.3.10",
-        "read-package-json-fast": "^3.0.2"
-    },
-    "type": "module",
-    "devDependencies": {
-        "@types/node": "^20.10.5",
-        "@types/npmcli__package-json": "^4.0.3",
-        "typescript": "^5.3.3"
-    },
-    "scripts": {
-        "build": "tsc",
-        "pretest": "npm run build",
-        "test": "npm run -w ./test/hello-world test && npm version -w ./test/hello-world --allow-same-version --no-git-tag-version 1.0.0-1 && npm run -w ./test/hello-world build:x && npm publish -w ./test/hello-world --dry-run"
-    },
-    "workspaces": [
-        "test/hello-world"
-    ]
+  "name": "0oscpu",
+  "version": "0.1.0",
+  "exports": null,
+  "bin": "dist/main.js",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@npmcli/package-json": "^5.0.0",
+    "execa": "^8.0.1",
+    "glob": "^10.3.10",
+    "read-package-json-fast": "^3.0.2"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@types/npmcli__package-json": "^4.0.3",
+    "typescript": "^5.3.3"
+  },
+  "scripts": {
+    "build": "tsc",
+    "pretest": "npm run build",
+    "test": "npm run -w ./test/hello-world test && npm version -w ./test/hello-world --allow-same-version --no-git-tag-version 1.0.0-1 && npm run -w ./test/hello-world build:x && npm publish -w ./test/hello-world --dry-run"
+  },
+  "workspaces": [
+    "test/hello-world"
+  ],
+  "homepage": "https://github.com/jcbhmr/0oscpu#readme",
+  "repository": "github:jcbhmr/0oscpu",
+  "description": "",
+  "keywords": [
+    "os",
+    "cpu",
+    "binary",
+    "dist",
+    "generate",
+    "publish"
+  ]
 }

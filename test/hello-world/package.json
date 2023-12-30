@@ -13,9 +13,15 @@
         "prepublishOnly": "0oscpu publish"
     },
     "0oscpu": {
+    "main": "main.js",
+    "dependencies": {}
+  
         "win32-x64": "win32-x64",
         "linux-x64": "linux-x64",
-        "darwin-x64": "darwin-x64"
+        "darwin-x64": "darwin-x64",
+    "scripts": {
+        "build": "tsc"
+    }
     },
     "optionalDependencies": {
         "@0oscpu/darwin-x64": "npm:hello-world@0.0.0-0oscpu.1.0.0-1.darwin-x64",

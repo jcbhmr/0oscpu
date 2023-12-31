@@ -5,12 +5,12 @@
   "bin": "main.js",
   "type": "commonjs",
   "scripts": {
-    "build": "0oscpu build me && 0oscpu link me",
-    "build:x": "0oscpu build",
+    "build": "npx 0oscpu build me && npx 0oscpu link me",
+    "build:x": "npx 0oscpu build",
     "pretest": "npm run build",
     "test": "node main.js",
-    "postversion": "0oscpu version",
-    "prepublishOnly": "0oscpu publish"
+    "postversion": "npx 0oscpu version",
+    "prepublishOnly": "npx 0oscpu publish"
   },
   "0oscpu": {
     "win32-x64": "win32-x64",

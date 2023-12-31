@@ -11,6 +11,7 @@ const options = {
     out: { type: "string", default: "out" },
     otp: { type: "string" },
     "dry-run": { type: "boolean" },
+    access: { type: "string" },
 } satisfies ParseArgsConfig['options']
 const args = process.argv.slice(3)
 const { values, positionals } = parseArgs({ options, args, allowPositionals: true })
@@ -23,6 +24,7 @@ main: {
 
     const outPath = resolve(values.out!)
     const dryRun = values['dry-run'] ?? (process.env.npm_config_dry_run ? JSON.parse(process.env.npm_config_dry_run) : null) ?? false
+    const access = values.access ?? (process.env.npm_config_access ? process.env.npm_config_access : null)
     const otp = values.otp
     const $0oscpu = Object.setPrototypeOf(Object(userPackage.content['0oscpu']), null)
 
@@ -39,12 +41,13 @@ main: {
         const opts: string[] = []
         if (otp != null) opts.push("--otp", otp)
         if (dryRun) opts.push("--dry-run")
+        if (access != null) opts.push("--access", access)
 
         const { stdout } = await $({ cwd })`npm publish --tag 0oscpu ${opts}`
 
         console.log(`Did 'npm publish' for ${target} ${targetPackage.content.name} ${targetPackage.content.version}`)
     }
-    
+
     const controller = new AbortController()
     const {signal} = controller
     const promises = targets.map(target => publish(target, signal))
